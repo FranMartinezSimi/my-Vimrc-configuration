@@ -1,0 +1,61 @@
+Teclas de función
+  F5   → compilar y ejecutar (según el lenguaje)
+  F6   → make
+  F7   → debug con gdb
+  F8   → valgrind / análisis
+  F9   → formatear código
+  F10  → activar/desactivar ALE
+  F11  → detalles del error
+  F12  → info de ALE
+
+  ---
+  Space (leader) + tecla
+  Space+w   → guardar
+  Space+q   → cerrar
+  Space+x   → guardar y cerrar
+  Space+m   → abrir Makefile
+  Space+r   → abrir README.md
+  Space+g   → abrir .gitignore
+  Space+/   → quitar resaltado de búsqueda
+  Space+s   → buscar y reemplazar
+  Space+b   → ver buffers abiertos
+  Space+n   → buffer siguiente
+  Space+p   → buffer anterior
+  Space+h   → toggle highlight
+  Space+pp  → toggle paste mode
+  Space+sv  → recargar config
+  Space+e   → abrir lista de errores
+  Space+E   → cerrar lista de errores
+  Space+ff  → buscar archivos (fzf)
+  Space+fg  → buscar texto en proyecto (fzf)
+  Space+fb  → buscar buffers (fzf)
+  Space+fh  → historial de archivos (fzf)
+
+  ---
+  Ctrl
+  Ctrl+n        → abrir/cerrar NERDTree
+  Ctrl+h/j/k/l  → moverse entre splits
+  Ctrl+↑↓←→    → redimensionar splits
+
+  ---
+  Navegación de errores
+  [g  → error anterior (ALE)
+  ]g  → error siguiente (ALE)
+  [d  → diagnóstico anterior (CoC)
+  ]d  → diagnóstico siguiente (CoC)
+  gd  → ir a definición (CoC)
+  gr  → ver referencias (CoC)
+  K   → ver documentación
+
+  ---
+  Comandos : personalizados
+  :Build      → make
+  :Clean      → make clean
+  :Test       → make test
+  :Ccompile   → compilar archivo C
+  :Crun       → ejecutar binario
+  :Cdebug     → abrir gdb
+  :Cvalgrind  → ejecutar valgrind
+  :ErrorsOn   → análisis completo de errores
+  :ErrorsOff  → desactivar análisis
+
