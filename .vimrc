@@ -86,6 +86,22 @@ Plug 'vim-airline/vim-airline-themes'       " Airline themes
 Plug 'tomasr/molokai'                       " Monokai colorscheme
 Plug 'morhetz/gruvbox'                      " Alternative gruvbox
 
+" Fuzzy finder (reemplaza ctrlp)
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" Muestra atajos disponibles al presionar leader
+Plug 'folke/which-key.nvim'
+
+" Guías visuales de indentación
+Plug 'Yggdroot/indentLine'
+
+" Resalta ocurrencias de la palabra bajo el cursor
+Plug 'RRethy/vim-illuminate'
+
+" Iconos para NERDTree y airline
+Plug 'ryanoasis/vim-devicons'
+
 call plug#end()
 
 " ====================================
@@ -103,10 +119,10 @@ endtry
 
 " ALE Configuration
 let g:ale_linters = {
-\   'c': ['gcc', 'cppcheck', 'clangd'],
-\   'cpp': ['g++', 'cppcheck', 'clangd'],
-\   'python': ['flake8', 'pylint'],
-\   'go': ['go build', 'gofmt', 'golint'],
+\   'c': ['gcc'],
+\   'cpp': ['g++'],
+\   'python': ['flake8'],
+\   'go': ['go build'],
 \   'javascript': ['eslint'],
 \   'rust': ['cargo'],
 \}
@@ -125,7 +141,7 @@ let g:ale_sign_warning = '⚠'
 let g:ale_sign_info = 'ℹ'
 let g:ale_fix_on_save = 0
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
 let g:ale_lint_delay = 1000
@@ -145,6 +161,10 @@ let g:ale_list_window_size = 5
 let g:NERDTreeWinSize = 30
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeIgnore = ['\.pyc$', '\.o$', '\.so$', '\.a$']
+let g:NERDTreeQuitOnOpen = 0
+
+" Abrir NERDTree automáticamente y mover cursor al archivo
+autocmd VimEnter * ++once NERDTree | wincmd p
 
 " vim-go Configuration
 let g:go_highlight_types = 1
@@ -162,6 +182,12 @@ let g:AutoPairsShortcutToggle = '<C-P>'
 " Airline Configuration
 let g:airline#extensions#ale#enabled = 1
 let g:airline_powerline_fonts = 1
+
+" FZF Configuration
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fg :Rg<CR>
+nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>fh :History<CR>
 
 " CoC Configuration
 " Use tab for trigger completion with characters ahead and navigate
@@ -208,8 +234,8 @@ function! ShowDocumentation()
   endif
 endfunction
 
-" Highlight the symbol and its references when holding the cursor
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" Highlight desactivado para evitar lag en cursor idle
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming
 nmap <leader>rn <Plug>(coc-rename)
